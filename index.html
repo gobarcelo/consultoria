@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gonzalo Barceló | Scientific & Environmental Consulting</title>
+  <meta name="description" content="Scientific and environmental consulting, data management, research design, and statistical advice for organizations, researchers, and applied projects." />
+  <style>
+    :root {
+      --bg: #f7f5ef;
+      --text: #1f2a24;
+      --muted: #5f6f66;
+      --primary: #214d3d;
+      --secondary: #d9eadf;
+      --accent: #c87f3a;
+      --card: #ffffff;
+      --line: #d8ded8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(247, 245, 239, 0.95);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      padding: 6rem 0 5rem;
+      background:
+        radial-gradient(circle at top left, rgba(217, 234, 223, 0.9), transparent 36%),
+        linear-gradient(135deg, #f7f5ef 0%, #edf2ea 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+      max-width: 850px;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 720px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0.85rem 1.25rem;
+      font-weight: 700;
+      border: 1px solid var(--primary);
+      transition: 0.2s ease;
+    }
+
+    .button-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .button-primary:hover {
+      background: #16382b;
+      transform: translateY(-1px);
+    }
+
+    .button-secondary {
+      color: var(--primary);
+      background: transparent;
+    }
+
+    .button-secondary:hover {
+      background: var(--secondary);
+      transform: translateY(-1px);
+    }
+
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 18px 50px rgba(31, 42, 36, 0.08);
+    }
+
+    .hero-card h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .hero-card ul {
+      list-style: none;
+      display: grid;
+      gap: 0.85rem;
+      color: var(--muted);
+    }
+
+    .hero-card li::before {
+      content: "•";
+      color: var(--accent);
+      font-weight: 700;
+      margin-right: 0.5rem;
+    }
+
+    section {
+      padding: 5rem 0;
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 1.7rem;
+      min-height: 240px;
+      box-shadow: 0 10px 30px rgba(31, 42, 36, 0.05);
+    }
+
+    .card .number {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.8rem;
+      color: var(--primary);
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .card ul {
+      padding-left: 1rem;
+      display: grid;
+      gap: 0.4rem;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--primary);
+      color: white;
+      border-radius: 28px;
+      padding: 2.2rem;
+    }
+
+    .panel h2 {
+      font-size: 2rem;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .panel p {
+      color: rgba(255,255,255,0.82);
+    }
+
+    .process-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .process-item {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 1rem;
+      align-items: start;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 1.2rem;
+    }
+
+    .step {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--secondary);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .process-item h3 {
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .process-item p {
+      color: var(--muted);
+    }
+
+    .about {
+      background: #edf2ea;
+    }
+
+    .about-box {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 2.4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .about-box h2 {
+      font-size: 2.2rem;
+      line-height: 1.15;
+      color: var(--primary);
+    }
+
+    .about-box p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.2rem;
+    }
+
+    .tag {
+      background: var(--secondary);
+      color: var(--primary);
+      border-radius: 999px;
+      padding: 0.45rem 0.75rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .contact {
+      text-align: center;
+      background: var(--primary);
+      color: white;
+    }
+
+    .contact h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .contact p {
+      max-width: 680px;
+      margin: 0 auto 2rem;
+      color: rgba(255,255,255,0.82);
+      font-size: 1.05rem;
+    }
+
+    .contact .button {
+      border-color: white;
+    }
+
+    .contact .button-primary {
+      background: white;
+      color: var(--primary);
+    }
+
+    .contact .button-secondary {
+      color: white;
+    }
+
+    .contact .button-secondary:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    footer {
+      padding: 2rem 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+      background: #f2f0e9;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid,
+      .split,
+      .about-box {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top">Gonzalo Barceló Consulting</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#approach">Approach</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Scientific consulting for applied decisions</span>
+          <h1>Clear environmental, data, and research support for complex questions.</h1>
+          <p>
+            I help teams turn scientific information into practical decisions through environmental consulting,
+            data management, study design, statistical analysis, and research advice. My work is grounded in ecological
+            science, but adaptable to any project that needs rigorous, evidence-based thinking.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="mailto:your-email@example.com">Request a consultation</a>
+            <a class="button button-secondary" href="#services">View services</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Core areas">
+          <h2>Core areas</h2>
+          <ul>
+            <li>Environmental consultancy</li>
+            <li>Data organization and management</li>
+            <li>Research design and scientific writing</li>
+            <li>Statistical advice and reproducible analysis</li>
+            <li>Decision support for applied projects</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Services</h2>
+          <p>
+            Flexible support for organizations, researchers, students, public institutions, NGOs, and private teams
+            that need scientific clarity, structured data, or evidence-based analysis.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="number">01</div>
+            <h3>Environmental consultancy</h3>
+            <p>
+              Technical support for projects involving ecological assessment, environmental interpretation,
+              field data, spatial information, biodiversity, and human–environment interactions.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="number">02</div>
+            <h3>Data management</h3>
+            <p>
+              Cleaning, organizing, documenting, and preparing datasets so they can be analyzed, shared,
+              archived, or used for reports and decision-making.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="number">03</div>
+            <h3>Research design</h3>
+            <p>
+              Advice on how to formulate research questions, define variables, structure methods, improve sampling
+              logic, and connect study design with meaningful conclusions.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="number">04</div>
+            <h3>Statistical advice</h3>
+            <p>
+              Support with model selection, interpretation of results, reproducible workflows, data visualization,
+              and clear communication of statistical findings.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="number">05</div>
+            <h3>Scientific writing and reports</h3>
+            <p>
+              Assistance translating technical results into reports, manuscripts, grant sections, environmental summaries,
+              and materials for non-specialist audiences.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="number">06</div>
+            <h3>Scientific advice beyond ecology</h3>
+            <p>
+              Applied scientific thinking for projects outside environmental science, including data-driven planning,
+              evidence synthesis, methodological review, and analytical strategy.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="approach">
+      <div class="container split">
+        <div class="panel">
+          <h2>A practical approach to scientific complexity.</h2>
+          <p>
+            Many teams collect information but need help deciding what it means, how reliable it is, and how to use it.
+            My role is to bring structure, scientific reasoning, and analytical clarity to that process.
+          </p>
+        </div>
+
+        <div class="process-list">
+          <div class="process-item">
+            <div class="step">1</div>
+            <div>
+              <h3>Clarify the question</h3>
+              <p>We define the main problem, expected outputs, available data, and the decisions the work needs to support.</p>
+            </div>
+          </div>
+
+          <div class="process-item">
+            <div class="step">2</div>
+            <div>
+              <h3>Organize the evidence</h3>
+              <p>We review datasets, documents, methods, assumptions, and gaps to build a reliable analytical foundation.</p>
+            </div>
+          </div>
+
+          <div class="process-item">
+            <div class="step">3</div>
+            <div>
+              <h3>Analyze and interpret</h3>
+              <p>We apply appropriate scientific and statistical tools, with emphasis on meaningful interpretation rather than only numerical outputs.</p>
+            </div>
+          </div>
+
+          <div class="process-item">
+            <div class="step">4</div>
+            <div>
+              <h3>Communicate clearly</h3>
+              <p>We translate findings into concise, useful products: reports, figures, summaries, recommendations, or manuscript sections.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container about-box">
+        <div>
+          <h2>About Gonzalo</h2>
+        </div>
+        <div>
+          <p>
+            Gonzalo is a scientist with experience in environmental research, ecological data, field-based projects,
+            statistical analysis, and applied research methods. His work combines scientific rigor with practical judgment,
+            helping teams move from scattered information to clear conclusions.
+          </p>
+          <p>
+            Although his background is rooted in ecology and environmental science, his consulting approach can support
+            broader projects that require data management, methodological review, analytical thinking, or evidence-based advice.
+          </p>
+          <div class="tags">
+            <span class="tag">Environmental science</span>
+            <span class="tag">Ecology</span>
+            <span class="tag">Statistics</span>
+            <span class="tag">Data management</span>
+            <span class="tag">Research methods</span>
+            <span class="tag">Scientific communication</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2>Need scientific support for a project?</h2>
+        <p>
+          Send a short message describing your project, the type of data or question you have, and the kind of support you need.
+          I will help you identify a clear next step.
+        </p>
+        <div class="hero-actions" style="justify-content: center;">
+          <a class="button button-primary" href="mailto:your-email@example.com">Email Gonzalo</a>
+          <a class="button button-secondary" href="https://wa.me/00000000000">Contact by WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Gonzalo Barceló Consulting. Scientific and environmental consulting.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
