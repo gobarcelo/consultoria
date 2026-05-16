@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gonzalo Barceló | Scientific & Environmental Consulting</title>
-  <meta name="description" content="Scientific and environmental consulting, data management, research design, and statistical advice for organizations, researchers, and applied projects." />
+  <title>Gonzalo Barceló | Consultoría científica y ambiental</title>
+  <meta name="description" content="Consultoría científica y ambiental, gestión de datos, diseño de investigación y asesoría estadística para proyectos aplicados." />
   <style>
     :root {
       --bg: #f7f5ef;
       --text: #1f2a24;
       --muted: #5f6f66;
       --primary: #214d3d;
+      --primary-dark: #14382b;
       --secondary: #d9eadf;
       --accent: #c87f3a;
       --card: #ffffff;
       --line: #d8ded8;
+      --soft: #edf2ea;
     }
 
     * {
@@ -32,6 +34,11 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
     }
 
     a {
@@ -80,13 +87,13 @@
     .hero {
       padding: 6rem 0 5rem;
       background:
-        radial-gradient(circle at top left, rgba(217, 234, 223, 0.9), transparent 36%),
+        radial-gradient(circle at top left, rgba(217, 234, 223, 0.95), transparent 36%),
         linear-gradient(135deg, #f7f5ef 0%, #edf2ea 100%);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
+      grid-template-columns: 1.05fr 0.95fr;
       gap: 3rem;
       align-items: center;
     }
@@ -102,7 +109,7 @@
     }
 
     h1 {
-      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
       line-height: 1.05;
       margin-bottom: 1.5rem;
       max-width: 850px;
@@ -138,7 +145,7 @@
     }
 
     .button-primary:hover {
-      background: #16382b;
+      background: var(--primary-dark);
       transform: translateY(-1px);
     }
 
@@ -152,32 +159,67 @@
       transform: translateY(-1px);
     }
 
-    .hero-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 2rem;
-      box-shadow: 0 18px 50px rgba(31, 42, 36, 0.08);
+    .hero-visual {
+      display: grid;
+      gap: 1rem;
     }
 
-    .hero-card h2 {
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
+    .image-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      min-height: 430px;
+      box-shadow: 0 18px 50px rgba(31, 42, 36, 0.1);
+    }
+
+    .image-card img,
+    .feature-image img,
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-card figcaption {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      background: rgba(20, 56, 43, 0.88);
+      color: white;
+      border-radius: 18px;
+      padding: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .quick-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 1.4rem;
+      box-shadow: 0 10px 30px rgba(31, 42, 36, 0.05);
+    }
+
+    .quick-card h2 {
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
       color: var(--primary);
     }
 
-    .hero-card ul {
+    .quick-card ul {
       list-style: none;
       display: grid;
-      gap: 0.85rem;
+      gap: 0.55rem;
       color: var(--muted);
     }
 
-    .hero-card li::before {
+    .quick-card li::before {
       content: "•";
       color: var(--accent);
       font-weight: 700;
-      margin-right: 0.5rem;
+      margin-right: 0.45rem;
     }
 
     section {
@@ -185,7 +227,7 @@
     }
 
     .section-heading {
-      max-width: 760px;
+      max-width: 780px;
       margin-bottom: 2.5rem;
     }
 
@@ -211,7 +253,7 @@
       border: 1px solid var(--line);
       border-radius: 22px;
       padding: 1.7rem;
-      min-height: 240px;
+      min-height: 235px;
       box-shadow: 0 10px 30px rgba(31, 42, 36, 0.05);
     }
 
@@ -233,10 +275,61 @@
       color: var(--muted);
     }
 
-    .card ul {
-      padding-left: 1rem;
+    .visual-section {
+      background: var(--soft);
+    }
+
+    .visual-grid {
       display: grid;
-      gap: 0.4rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+      align-items: stretch;
+    }
+
+    .feature-image {
+      position: relative;
+      overflow: hidden;
+      border-radius: 26px;
+      min-height: 360px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: 0 14px 40px rgba(31, 42, 36, 0.08);
+    }
+
+    .feature-text {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 2.2rem;
+      display: grid;
+      align-content: center;
+    }
+
+    .feature-text h2 {
+      color: var(--primary);
+      font-size: clamp(1.9rem, 3vw, 2.6rem);
+      line-height: 1.12;
+      margin-bottom: 1rem;
+    }
+
+    .feature-text p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .check-list {
+      display: grid;
+      gap: 0.6rem;
+      list-style: none;
+      color: var(--muted);
+      margin-top: 0.6rem;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: 700;
+      margin-right: 0.5rem;
     }
 
     .split {
@@ -260,7 +353,7 @@
     }
 
     .panel p {
-      color: rgba(255,255,255,0.82);
+      color: rgba(255,255,255,0.84);
     }
 
     .process-list {
@@ -300,7 +393,7 @@
     }
 
     .about {
-      background: #edf2ea;
+      background: var(--soft);
     }
 
     .about-box {
@@ -309,18 +402,37 @@
       border-radius: 28px;
       padding: 2.4rem;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 0.75fr 1.25fr;
       gap: 2rem;
-      align-items: start;
+      align-items: stretch;
     }
 
-    .about-box h2 {
+    .about-photo {
+      border-radius: 24px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--secondary), #f7f5ef);
+      min-height: 320px;
+      display: grid;
+      place-items: center;
+      color: var(--primary);
+      font-weight: 700;
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .about-photo .fallback {
+      font-size: 1rem;
+      max-width: 230px;
+    }
+
+    .about-content h2 {
       font-size: 2.2rem;
       line-height: 1.15;
       color: var(--primary);
+      margin-bottom: 1rem;
     }
 
-    .about-box p {
+    .about-content p {
       color: var(--muted);
       margin-bottom: 1rem;
     }
@@ -356,7 +468,7 @@
     .contact p {
       max-width: 680px;
       margin: 0 auto 2rem;
-      color: rgba(255,255,255,0.82);
+      color: rgba(255,255,255,0.84);
       font-size: 1.05rem;
     }
 
@@ -385,8 +497,15 @@
       background: #f2f0e9;
     }
 
-    @media (max-width: 860px) {
+    .image-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 900px) {
       .hero-grid,
+      .visual-grid,
       .split,
       .about-box {
         grid-template-columns: 1fr;
@@ -394,6 +513,11 @@
 
       .cards {
         grid-template-columns: 1fr;
+      }
+
+      .image-card,
+      .feature-image {
+        min-height: 300px;
       }
 
       .nav {
@@ -414,12 +538,13 @@
 <body>
   <header>
     <div class="container nav">
-      <a class="brand" href="#top">Gonzalo Barceló Consulting</a>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="#services">Services</a>
-        <a href="#approach">Approach</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+      <a class="brand" href="#top">Gonzalo Barceló Consultoría</a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#aplicaciones">Aplicaciones</a>
+        <a href="#metodo">Método</a>
+        <a href="#sobre">Sobre Gonzalo</a>
+        <a href="#contacto">Contacto</a>
       </nav>
     </div>
   </header>
@@ -428,107 +553,140 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">Scientific consulting for applied decisions</span>
-          <h1>Clear environmental, data, and research support for complex questions.</h1>
+          <span class="eyebrow">Consultoría científica para decisiones aplicadas</span>
+          <h1>Asesoría ambiental, análisis de datos y apoyo científico para proyectos complejos.</h1>
           <p>
-            I help teams turn scientific information into practical decisions through environmental consulting,
-            data management, study design, statistical analysis, and research advice. My work is grounded in ecological
-            science, but adaptable to any project that needs rigorous, evidence-based thinking.
+            Apoyo a equipos, instituciones y profesionales que necesitan ordenar información, diseñar estudios,
+            analizar datos e interpretar resultados de manera rigurosa. El trabajo se basa en experiencia en ciencias
+            ambientales y ecología, pero puede aplicarse a otros proyectos que requieran pensamiento científico,
+            evidencia y claridad metodológica.
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="mailto:your-email@example.com">Request a consultation</a>
-            <a class="button button-secondary" href="#services">View services</a>
+            <a class="button button-primary" href="mailto:gobarcelo@gmail.com">Solicitar una reunión</a>
+            <a class="button button-secondary" href="#servicios">Ver servicios</a>
           </div>
         </div>
 
-        <aside class="hero-card" aria-label="Core areas">
-          <h2>Core areas</h2>
-          <ul>
-            <li>Environmental consultancy</li>
-            <li>Data organization and management</li>
-            <li>Research design and scientific writing</li>
-            <li>Statistical advice and reproducible analysis</li>
-            <li>Decision support for applied projects</li>
-          </ul>
-        </aside>
+        <div class="hero-visual">
+          <figure class="image-card">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Field_research_%2851358761864%29.jpg" alt="Trabajo de campo y registro de datos ambientales" />
+            <figcaption>
+              Consultoría para transformar datos, observaciones y evidencia científica en decisiones comprensibles y útiles.
+            </figcaption>
+          </figure>
+
+          <aside class="quick-card" aria-label="Áreas principales">
+            <h2>Áreas principales</h2>
+            <ul>
+              <li>Consultoría ambiental</li>
+              <li>Gestión, limpieza y organización de datos</li>
+              <li>Diseño de investigación y revisión metodológica</li>
+              <li>Asesoría estadística e interpretación de resultados</li>
+              <li>Informes técnicos y comunicación científica</li>
+            </ul>
+          </aside>
+        </div>
       </div>
     </section>
 
-    <section id="services">
+    <section id="servicios">
       <div class="container">
         <div class="section-heading">
-          <h2>Services</h2>
+          <h2>Servicios</h2>
           <p>
-            Flexible support for organizations, researchers, students, public institutions, NGOs, and private teams
-            that need scientific clarity, structured data, or evidence-based analysis.
+            Acompañamiento flexible para proyectos ambientales, académicos, institucionales o privados que necesitan
+            respaldo científico, orden metodológico y análisis claro para tomar mejores decisiones.
           </p>
         </div>
 
         <div class="cards">
           <article class="card">
             <div class="number">01</div>
-            <h3>Environmental consultancy</h3>
+            <h3>Consultoría ambiental</h3>
             <p>
-              Technical support for projects involving ecological assessment, environmental interpretation,
-              field data, spatial information, biodiversity, and human–environment interactions.
+              Apoyo técnico para proyectos relacionados con evaluación ambiental, monitoreo ecológico, biodiversidad,
+              territorio, interacción humano-ambiente y análisis de información de campo.
             </p>
           </article>
 
           <article class="card">
             <div class="number">02</div>
-            <h3>Data management</h3>
+            <h3>Gestión de datos</h3>
             <p>
-              Cleaning, organizing, documenting, and preparing datasets so they can be analyzed, shared,
-              archived, or used for reports and decision-making.
+              Limpieza, ordenamiento, documentación y preparación de bases de datos para análisis, reportes,
+              visualizaciones, respaldo institucional o uso en investigación aplicada.
             </p>
           </article>
 
           <article class="card">
             <div class="number">03</div>
-            <h3>Research design</h3>
+            <h3>Diseño de investigación</h3>
             <p>
-              Advice on how to formulate research questions, define variables, structure methods, improve sampling
-              logic, and connect study design with meaningful conclusions.
+              Asesoría para formular preguntas, definir variables, estructurar métodos, revisar diseños de muestreo
+              y conectar los objetivos del estudio con conclusiones interpretables.
             </p>
           </article>
 
           <article class="card">
             <div class="number">04</div>
-            <h3>Statistical advice</h3>
+            <h3>Asesoría estadística</h3>
             <p>
-              Support with model selection, interpretation of results, reproducible workflows, data visualization,
-              and clear communication of statistical findings.
+              Orientación en selección de modelos, análisis reproducible, visualización de datos, interpretación de
+              resultados y comunicación de hallazgos estadísticos en lenguaje claro.
             </p>
           </article>
 
           <article class="card">
             <div class="number">05</div>
-            <h3>Scientific writing and reports</h3>
+            <h3>Informes y escritura científica</h3>
             <p>
-              Assistance translating technical results into reports, manuscripts, grant sections, environmental summaries,
-              and materials for non-specialist audiences.
+              Apoyo para transformar resultados técnicos en informes, secciones de manuscritos, resúmenes ejecutivos,
+              propuestas, figuras y materiales para audiencias no especialistas.
             </p>
           </article>
 
           <article class="card">
             <div class="number">06</div>
-            <h3>Scientific advice beyond ecology</h3>
+            <h3>Asesoría científica transversal</h3>
             <p>
-              Applied scientific thinking for projects outside environmental science, including data-driven planning,
-              evidence synthesis, methodological review, and analytical strategy.
+              Aplicación de pensamiento científico a proyectos fuera del área ambiental: revisión de evidencia,
+              estrategia analítica, evaluación metodológica y apoyo en toma de decisiones basada en datos.
             </p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="approach">
+    <section id="aplicaciones" class="visual-section">
+      <div class="container visual-grid">
+        <figure class="feature-image">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Partner_Staff_%2852387732262%29.jpg" alt="Revisión de gráficos y datos antes de trabajo de campo" />
+        </figure>
+        <div class="feature-text">
+          <span class="eyebrow">Dónde puede aportar</span>
+          <h2>Una mirada científica para proyectos que necesitan estructura.</h2>
+          <p>
+            No todos los proyectos requieren un equipo científico completo, pero muchos sí necesitan una revisión experta
+            para ordenar datos, validar métodos, interpretar resultados o comunicar evidencia de manera responsable.
+          </p>
+          <ul class="check-list">
+            <li>Proyectos ambientales y de biodiversidad</li>
+            <li>Monitoreo, terreno y bases de datos ecológicas</li>
+            <li>Tesis, manuscritos y propuestas de investigación</li>
+            <li>Informes técnicos para instituciones, ONG o empresas</li>
+            <li>Proyectos de otras áreas que requieren análisis de datos y criterio científico</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="metodo">
       <div class="container split">
         <div class="panel">
-          <h2>A practical approach to scientific complexity.</h2>
+          <h2>Un método práctico para trabajar con complejidad.</h2>
           <p>
-            Many teams collect information but need help deciding what it means, how reliable it is, and how to use it.
-            My role is to bring structure, scientific reasoning, and analytical clarity to that process.
+            Muchas veces el problema no es la falta de información, sino saber qué significa, qué tan confiable es,
+            cómo analizarla y cómo comunicarla. El foco está en entregar claridad, no solo resultados numéricos.
           </p>
         </div>
 
@@ -536,75 +694,101 @@
           <div class="process-item">
             <div class="step">1</div>
             <div>
-              <h3>Clarify the question</h3>
-              <p>We define the main problem, expected outputs, available data, and the decisions the work needs to support.</p>
+              <h3>Clarificar la pregunta</h3>
+              <p>Definimos el problema central, los datos disponibles, los productos esperados y la decisión que el análisis debe apoyar.</p>
             </div>
           </div>
 
           <div class="process-item">
             <div class="step">2</div>
             <div>
-              <h3>Organize the evidence</h3>
-              <p>We review datasets, documents, methods, assumptions, and gaps to build a reliable analytical foundation.</p>
+              <h3>Ordenar la evidencia</h3>
+              <p>Revisamos bases de datos, documentos, métodos, supuestos, sesgos posibles y vacíos de información.</p>
             </div>
           </div>
 
           <div class="process-item">
             <div class="step">3</div>
             <div>
-              <h3>Analyze and interpret</h3>
-              <p>We apply appropriate scientific and statistical tools, with emphasis on meaningful interpretation rather than only numerical outputs.</p>
+              <h3>Analizar e interpretar</h3>
+              <p>Aplicamos herramientas científicas y estadísticas apropiadas, priorizando interpretación ecológica, técnica o aplicada.</p>
             </div>
           </div>
 
           <div class="process-item">
             <div class="step">4</div>
             <div>
-              <h3>Communicate clearly</h3>
-              <p>We translate findings into concise, useful products: reports, figures, summaries, recommendations, or manuscript sections.</p>
+              <h3>Comunicar con claridad</h3>
+              <p>Traducimos los hallazgos en informes, gráficos, recomendaciones, presentaciones o textos científicos.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="about" class="about">
-      <div class="container about-box">
-        <div>
-          <h2>About Gonzalo</h2>
-        </div>
-        <div>
+    <section class="visual-section">
+      <div class="container visual-grid">
+        <div class="feature-text">
+          <span class="eyebrow">De los datos a la decisión</span>
+          <h2>Apoyo para proyectos que necesitan rigor, pero también síntesis.</h2>
           <p>
-            Gonzalo is a scientist with experience in environmental research, ecological data, field-based projects,
-            statistical analysis, and applied research methods. His work combines scientific rigor with practical judgment,
-            helping teams move from scattered information to clear conclusions.
+            El objetivo es que la información científica sea útil: que permita comparar alternativas, justificar decisiones,
+            detectar limitaciones y comunicar resultados de manera transparente.
           </p>
           <p>
-            Although his background is rooted in ecology and environmental science, his consulting approach can support
-            broader projects that require data management, methodological review, analytical thinking, or evidence-based advice.
+            Cada proyecto puede ajustarse según su etapa: diagnóstico inicial, revisión metodológica, análisis puntual,
+            acompañamiento continuo o desarrollo completo de informes y productos técnicos.
+          </p>
+        </div>
+        <figure class="feature-image">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Field_soil_sampling.jpg" alt="Muestreo ambiental en terreno" />
+        </figure>
+      </div>
+    </section>
+
+    <section id="sobre" class="about">
+      <div class="container about-box">
+        <div class="about-photo">
+          <!-- Reemplazar por una foto real de Gonzalo cuando esté disponible: images/gonzalo-perfil.jpg -->
+          <div class="fallback">Espacio recomendado para una foto real de Gonzalo en terreno, oficina o contexto profesional.</div>
+        </div>
+        <div class="about-content">
+          <h2>Sobre Gonzalo</h2>
+          <p>
+            Gonzalo cuenta con experiencia en investigación ambiental, datos ecológicos, trabajo de campo,
+            análisis estadístico y métodos de investigación aplicada. Su enfoque combina rigurosidad científica,
+            criterio práctico y comunicación clara.
+          </p>
+          <p>
+            Aunque su trayectoria se vincula principalmente con ecología y ciencias ambientales, su asesoría puede
+            apoyar proyectos más amplios que requieran gestión de datos, revisión metodológica, análisis de evidencia
+            o interpretación científica para la toma de decisiones.
           </p>
           <div class="tags">
-            <span class="tag">Environmental science</span>
-            <span class="tag">Ecology</span>
-            <span class="tag">Statistics</span>
-            <span class="tag">Data management</span>
-            <span class="tag">Research methods</span>
-            <span class="tag">Scientific communication</span>
+            <span class="tag">Ciencias ambientales</span>
+            <span class="tag">Ecología</span>
+            <span class="tag">Estadística aplicada</span>
+            <span class="tag">Gestión de datos</span>
+            <span class="tag">Métodos de investigación</span>
+            <span class="tag">Comunicación científica</span>
           </div>
+          <p class="image-note">
+            Sugerencia: reemplazar este bloque por una fotografía propia. Una imagen real de Gonzalo aumenta confianza más que una foto genérica.
+          </p>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="contact">
+    <section id="contacto" class="contact">
       <div class="container">
-        <h2>Need scientific support for a project?</h2>
+        <h2>¿Necesitas apoyo científico para un proyecto?</h2>
         <p>
-          Send a short message describing your project, the type of data or question you have, and the kind of support you need.
-          I will help you identify a clear next step.
+          Envía un mensaje breve con el tipo de proyecto, los datos o preguntas disponibles y el apoyo que necesitas.
+          A partir de eso podemos definir un primer paso claro y realista.
         </p>
         <div class="hero-actions" style="justify-content: center;">
-          <a class="button button-primary" href="mailto:your-email@example.com">Email Gonzalo</a>
-          <a class="button button-secondary" href="https://wa.me/00000000000">Contact by WhatsApp</a>
+          <a class="button button-primary" href="mailto:gobarcelo@gmail.com">Escribir por email</a>
+          <a class="button button-secondary" href="https://wa.me/56941948760?text=Estoy%20interesado%20en%20apoyo%20científico/ambiental">Contactar por WhatsApp</a>
         </div>
       </div>
     </section>
@@ -612,7 +796,8 @@
 
   <footer>
     <div class="container">
-      <p>© <span id="year"></span> Gonzalo Barceló Consulting. Scientific and environmental consulting.</p>
+      <p>© <span id="year"></span> Gonzalo Barceló Consultoría. Asesoría científica, ambiental y análisis de datos.</p>
+      <p class="image-note">Imágenes referenciales de dominio público o CC0. Se recomienda reemplazarlas por fotografías propias cuando estén disponibles.</p>
     </div>
   </footer>
 
